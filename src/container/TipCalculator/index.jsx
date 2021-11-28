@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Input from '../../components/input';
+import dollar from '../../assets/images/icon-dollar.svg';
+import person from '../../assets/images/icon-person.svg';
 
 const Container = styled.div`
   background-color: ${({ theme }) => theme.color.neutral.white};
@@ -13,7 +15,7 @@ const Container = styled.div`
 
 const TipCalculator = () => (
   <Container>
-    <Input icon="$" label="Bill" type="currency" />
+    <Input currency icon={dollar} label="Bill" />
     <div>
       <h3>Select Tip %</h3>
       <label className="container" htmlFor="five">
@@ -48,7 +50,7 @@ const TipCalculator = () => (
       </label>
     </div>
 
-    <Input icon="P" label="Number of People" type="number" />
+    <Input icon={person} label="Number of People" />
 
     <div>
       <div>
