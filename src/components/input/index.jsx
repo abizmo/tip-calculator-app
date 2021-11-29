@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  margin-bottom: 32px;
   position: relative;
 `;
 
@@ -16,9 +17,11 @@ const BoxInput = styled.input`
   appearance: none;
   background-color: ${({ theme }) => theme.color.neutral.lighter};
   border: 1px solid ${({ theme }) => theme.color.neutral.lighter};
+  border-radius: 4px;
   color: ${({ theme }) => theme.color.neutral.darkest};
   font-family: ${({ theme }) => theme.typography.family.body};
   font-size: 1rem;
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
   padding: 16px 18px 16px 43px;
   text-align: right;
   width: 100%;
