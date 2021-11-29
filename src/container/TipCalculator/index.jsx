@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Input from '../../components/input';
 import dollar from '../../assets/images/icon-dollar.svg';
 import person from '../../assets/images/icon-person.svg';
+import TotalBox from '../../components/TotalBox';
 
 const Container = styled.div`
   background-color: ${({ theme }) => theme.color.neutral.white};
@@ -52,23 +53,7 @@ const TipCalculator = () => (
 
     <Input icon={person} label="Number of People" />
 
-    <div>
-      <div>
-        <h3>
-          Tip Amount
-          <small>/ person</small>
-        </h3>
-        <h2>$4.27</h2>
-      </div>
-      <div>
-        <h3>
-          Total
-          <small>/ person</small>
-        </h3>
-        <h2>$32.79</h2>
-      </div>
-      <button type="button">reset</button>
-    </div>
+    <TotalBox />
   </Container>
 );
 
