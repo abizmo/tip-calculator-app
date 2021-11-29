@@ -5,6 +5,7 @@ import Input from '../../components/input';
 import dollar from '../../assets/images/icon-dollar.svg';
 import person from '../../assets/images/icon-person.svg';
 import TotalBox from '../../components/TotalBox';
+import Select from '../../components/Select';
 
 const Container = styled.div`
   background-color: ${({ theme }) => theme.color.neutral.white};
@@ -17,42 +18,8 @@ const Container = styled.div`
 const TipCalculator = () => (
   <Container>
     <Input currency icon={dollar} label="Bill" />
-    <div>
-      <h3>Select Tip %</h3>
-      <label className="container" htmlFor="five">
-        5%
-        <input checked="checked" id="five" name="tip" type="radio" />
-        <span className="checkmark" />
-      </label>
-      <label className="container" htmlFor="five">
-        10%
-        <input checked="checked" id="ten" name="tip" type="radio" />
-        <span className="checkmark" />
-      </label>
-      <label className="container" htmlFor="five">
-        15%
-        <input checked="checked" id="fifteen" name="tip" type="radio" />
-        <span className="checkmark" />
-      </label>
-      <label className="container" htmlFor="five">
-        25%
-        <input checked="checked" id="twenty-five" name="tip" type="radio" />
-        <span className="checkmark" />
-      </label>
-      <label className="container" htmlFor="five">
-        50%
-        <input checked="checked" id="fifty" name="tip" type="radio" />
-        <span className="checkmark" />
-      </label>
-      <label className="container" htmlFor="five">
-        Custom
-        <input checked="checked" id="custom" name="tip" type="radio" />
-        <span className="checkmark" />
-      </label>
-    </div>
-
+    <Select />
     <Input icon={person} label="Number of People" />
-
     <TotalBox />
   </Container>
 );
