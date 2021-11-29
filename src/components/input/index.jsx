@@ -43,6 +43,7 @@ const Label = styled.h3`
   font-weight: ${({ theme }) => theme.typography.weight.bold};
   margin: 0 0 12px;
 `;
+
 const Input = ({ currency, icon, label }) => (
   <Container>
     <Label>{label}</Label>

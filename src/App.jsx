@@ -10,8 +10,6 @@ const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  position: fixed;
-  bottom: 0;
 `;
 
 const Logo = styled.h1`
