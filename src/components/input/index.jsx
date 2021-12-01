@@ -26,6 +26,10 @@ const BoxInput = styled.input`
   text-align: right;
   width: 100%;
 
+  &::placeholder {
+    color: ${({ theme }) => theme.color.neutral.darkest};
+  }
+
   /* Remove arrow number */
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -48,14 +52,18 @@ const Input = ({ currency, icon, label }) => (
   <Container>
     <Label>{label}</Label>
     <Icon alt="icon" src={icon} />
-    <BoxInput type="number" defaultValue={0} min={0} step={currency ? 0.01 : 1} />
+    <BoxInput type="number" min={0} placeholder="0" step={currency ? 0.01 : 1} />
   </Container>
 );
 
 Input.propTypes = {
-  currency: PropTypes.bool.isRequired,
+  currency: PropTypes.bool,
   icon: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+};
+
+Input.defaultProps = {
+  currency: false,
 };
 
 export default Input;

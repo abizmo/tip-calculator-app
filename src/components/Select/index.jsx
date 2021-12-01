@@ -39,6 +39,7 @@ const BoxRadio = styled.label`
 
   & span {
     background-color: ${({ theme }) => theme.color.neutral.darkest};
+    border: 1px solid ${({ theme }) => theme.color.neutral.darkest};
     border-radius: 4px;
     color: ${({ theme }) => theme.color.neutral.lighter};
     font-weight: ${({ theme }) => theme.typography.weight.bold};
@@ -53,12 +54,32 @@ const BoxRadio = styled.label`
 
   &:hover input ~ span {
     background-color: ${({ theme }) => theme.color.primary};
+    border: 1px solid ${({ theme }) => theme.color.primary};
     color: ${({ theme }) => theme.color.neutral.darkest};
   }
 
   & input:checked ~ span {
     background-color: ${({ theme }) => theme.color.primary};
+    border: 1px solid ${({ theme }) => theme.color.primary};
     color: ${({ theme }) => theme.color.neutral.darkest};
+  }
+`;
+
+const Custom = styled.input`
+  background-color: ${({ theme }) => theme.color.neutral.lighter};
+  border: 1px solid ${({ theme }) => theme.color.neutral.lighter};
+  border-radius: 4px;
+  color: ${({ theme }) => theme.color.neutral.darkest};
+  font-family: ${({ theme }) => theme.typography.family.body};
+  font-size: 1rem;
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
+  padding: 8px;
+  text-align: right;
+  width: 100%;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.color.neutral.darkest};
+    opacity: 0.8;
   }
 `;
 
@@ -75,7 +96,7 @@ const Select = () => (
         <span>10%</span>
       </BoxRadio>
       <BoxRadio htmlFor="fifteen">
-        <input checked id="fifteen" name="tip" type="radio" />
+        <input id="fifteen" name="tip" type="radio" />
         <span>15%</span>
       </BoxRadio>
       <BoxRadio htmlFor="twenty-five">
@@ -86,10 +107,7 @@ const Select = () => (
         <input id="fifty" name="tip" type="radio" />
         <span>50%</span>
       </BoxRadio>
-      <BoxRadio htmlFor="custom">
-        <input id="custom" name="tip" type="radio" />
-        <span>Custom</span>
-      </BoxRadio>
+      <Custom id="custom" name="tip" placeholder="Custom" type="text" />
     </SelectBox>
   </Container>
 );
