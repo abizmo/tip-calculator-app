@@ -5,6 +5,7 @@ export default {
   },
   color: {
     primary: 'hsl(172, 67%, 45%)',
+    hover: 'HSL(173,61%,77%)',
     neutral: {
       darkest: 'hsl(183, 100%, 15%)',
       darker: 'hsl(186, 14%, 43%)',

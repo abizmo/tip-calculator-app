@@ -1,6 +1,8 @@
 import React from 'react';
-
 import styled from 'styled-components';
+
+import InputBox from './InputBox';
+import ResumeBox from './ResumeBox';
 
 const Container = styled.div`
   background-color: ${({ theme }) => theme.color.neutral.white};
@@ -8,7 +10,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  height: 500px;
   max-width: 375px;
   padding: 32px;
   width: 100%;
@@ -19,17 +20,20 @@ const Container = styled.div`
     flex-direction: row;
     max-width: 920px;
   }
-`;
 
-const Div = styled.div`
-  background-color: blanchedalmond;
-  flex: 1;
+  /* TODO: quitar si es necesario */
+  height: 500px;
+  /* TODO: quitar si es necesario */
 `;
 
 const TipCalculator = () => (
   <Container>
-    <Div />
-    <Div />
+    <InputBox />
+    <ResumeBox
+      onReset={() => console.log('reset')}
+      tipAmount={4.27}
+      total={32.79}
+    />
   </Container>
 );
 
