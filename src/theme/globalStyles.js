@@ -15,6 +15,11 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
       width: 100%;
     }
+
+    #root {
+      height: 100%;
+      width: 100%;
+    }
   `}
 `;
 
