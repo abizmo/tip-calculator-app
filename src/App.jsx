@@ -11,13 +11,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  height: 100%;
   justify-content: end;
+  margin-top: 20px;
   width: 100%;
 
   @media(min-width: 1024px) {
     gap: 80px;
+    height: 100%;
     justify-content: center;
+    margin-top: 0;
   }
 `;
 
