@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import dollarIcon from '../../../assets/images/icon-dollar.svg';
 import peopleIcon from '../../../assets/images/icon-person.svg';
 import InputGroup, { Input, Label } from '../Input';
+import RadioGroup from '../Input/RadioInput';
 
 const Container = styled.div`
   display: flex;
@@ -19,6 +20,34 @@ const Container = styled.div`
   }
 `;
 
+const inputsData = [
+  {
+    id: 'five',
+    label: '5%',
+    name: 'tip',
+  },
+  {
+    id: 'ten',
+    label: '10%',
+    name: 'tip',
+  },
+  {
+    id: 'fifteen',
+    label: '15%',
+    name: 'tip',
+  },
+  {
+    id: 'twenty-five',
+    label: '25%',
+    name: 'tip',
+  },
+  {
+    id: 'fifty',
+    label: '50%',
+    name: 'tip',
+  },
+];
+
 const InputBox = () => (
   <Container>
     <InputGroup
@@ -30,32 +59,14 @@ const InputBox = () => (
     />
     <div>
       <Label>Select Tip %</Label>
-      <label htmlFor="five">
-        5%
-        <input type="radio" name="tip" id="five" />
-      </label>
-      <label htmlFor="ten">
-        10%
-        <input type="radio" name="tip" id="ten" />
-      </label>
-      <label htmlFor="fifteen">
-        15%
-        <input type="radio" name="tip" id="fifteen" />
-      </label>
-      <label htmlFor="twenty-five">
-        25%
-        <input type="radio" name="tip" id="twenty-five" />
-      </label>
-      <label htmlFor="fifty">
-        50%
-        <input type="radio" name="tip" id="fifty" />
-      </label>
-      <Input
-        id="custom"
-        name="tip"
-        placeholder="Custom"
-        type="number"
-      />
+      <RadioGroup inputsData={inputsData}>
+        <Input
+          id="custom"
+          name="tip"
+          placeholder="Custom"
+          type="number"
+        />
+      </RadioGroup>
     </div>
     <InputGroup
       icon={peopleIcon}
