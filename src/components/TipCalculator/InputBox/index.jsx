@@ -8,7 +8,6 @@ import RadioGroup from '../Input/RadioInput';
 
 const Container = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 32px;
   justify-content: space-between;
@@ -62,9 +61,12 @@ const InputBox = () => (
       <RadioGroup inputsData={inputsData}>
         <Input
           id="custom"
+          max="100"
+          min="0"
           name="tip"
           placeholder="Custom"
           type="number"
+          step="0.01"
         />
       </RadioGroup>
     </div>
