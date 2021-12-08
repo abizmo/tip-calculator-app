@@ -32,6 +32,12 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.color.hover};
     cursor: pointer;
   }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.color.neutral.dark};
+    color: ${({ theme }) => theme.color.neutral.darker};
+    opacity: .35;
+  }
 `;
 
 const ResumeBox = ({ onReset, tipAmount, total }) => (
@@ -48,7 +54,7 @@ const ResumeBox = ({ onReset, tipAmount, total }) => (
         total={total}
       />
     </div>
-    <Button onClick={onReset} type="button">Reset</Button>
+    <Button disabled={!total} onClick={onReset} type="button">Reset</Button>
   </Container>
 );
 
