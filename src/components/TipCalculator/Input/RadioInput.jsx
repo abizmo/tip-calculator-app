@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Input } from '.';
 
 const Label = styled.label`
   cursor: pointer;
@@ -42,10 +43,12 @@ const Label = styled.label`
     color: ${({ theme }) => theme.color.neutral.darkest};
   }
 `;
+const RadioInput = ({
 // eslint-disable-next-line react/prop-types
-const RadioInput = ({ id, label, name }) => (
+  id, label, name, onChange, value,
+}) => (
   <Label htmlFor={id}>
-    <input type="radio" name={name} id={id} />
+    <input type="radio" name={name} id={id} onChange={({ target }) => onChange(target)} value={value} />
     <span>{label}</span>
   </Label>
 );
@@ -61,15 +64,33 @@ const Container = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-const RadioGroup = ({ children, inputsData }) => (
+const RadioGroup = ({ inputsData, onChange }) => (
   <Container>
     {
       // eslint-disable-next-line react/prop-types
-      inputsData.map(({ id, label, name }) => (
-        <RadioInput id={id} label={label} name={name} />
+      inputsData.map(({
+        id, label, name, value: v,
+      }) => (
+        <RadioInput
+          id={id}
+          key={id}
+          label={label}
+          name={name}
+          onChange={onChange}
+          value={v}
+        />
       ))
     }
-    { children && children }
+    <Input
+      id="custom"
+      max="100"
+      min="0"
+      name="tip"
+      onChange={({ target }) => onChange({ name: target.name, value: Number(target.value) })}
+      placeholder="Custom"
+      step="0.01"
+      type="number"
+    />
   </Container>
 );
 

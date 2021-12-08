@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import dollarIcon from '../../../assets/images/icon-dollar.svg';
 import peopleIcon from '../../../assets/images/icon-person.svg';
-import InputGroup, { Input, Label } from '../Input';
+import InputGroup, { Label } from '../Input';
 import RadioGroup from '../Input/RadioInput';
 
 const Container = styled.div`
@@ -24,58 +24,62 @@ const inputsData = [
     id: 'five',
     label: '5%',
     name: 'tip',
+    value: 5,
   },
   {
     id: 'ten',
     label: '10%',
     name: 'tip',
+    value: 10,
   },
   {
     id: 'fifteen',
     label: '15%',
     name: 'tip',
+    value: 15,
   },
   {
     id: 'twenty-five',
     label: '25%',
     name: 'tip',
+    value: 25,
   },
   {
     id: 'fifty',
     label: '50%',
     name: 'tip',
+    value: 50,
   },
 ];
 
-const InputBox = () => (
+const InputBox = ({
+// eslint-disable-next-line react/prop-types
+  bill, onChange, people,
+}) => (
   <Container>
     <InputGroup
       icon={dollarIcon}
       id="bill"
+      onChange={onChange}
       placeholder="0"
+      step="0.01"
       title="Bill"
       type="number"
+      value={bill}
     />
     <div>
       <Label>Select Tip %</Label>
-      <RadioGroup inputsData={inputsData}>
-        <Input
-          id="custom"
-          max="100"
-          min="0"
-          name="tip"
-          placeholder="Custom"
-          type="number"
-          step="0.01"
-        />
-      </RadioGroup>
+      <RadioGroup inputsData={inputsData} onChange={onChange} />
     </div>
     <InputGroup
       icon={peopleIcon}
       id="people"
+      onChange={onChange}
       placeholder="0"
+      step="1"
       title="Number of People"
       type="number"
+      value={people}
     />
   </Container>
 );

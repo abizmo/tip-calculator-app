@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import InputBox from './InputBox';
@@ -24,15 +24,52 @@ const Container = styled.div`
   }
 `;
 
-const TipCalculator = () => (
-  <Container>
-    <InputBox />
-    <ResumeBox
-      onReset={() => console.log('reset')}
-      tipAmount={4.27}
-      total={32.79}
-    />
-  </Container>
-);
+const initialInputs = {
+  bill: 0,
+  people: 0,
+  tip: 0,
+};
+
+const initialResult = {
+  tipAmount: 0,
+  total: 0,
+};
+
+const TipCalculator = () => {
+  const [inputs, setInputs] = useState(initialInputs);
+  const [result, setResult] = useState(initialResult);
+  const { bill, people, tip } = inputs;
+  const { tipAmount, total } = result;
+
+  useEffect(() => {
+    if (people !== 0) {
+      setResult({
+        tipAmount: (bill * tip) / (100 * people),
+        total: (bill + (bill * tip) / 100) / people,
+      });
+    }
+  }, [bill, tip, people]);
+
+  const handleInputsChange = ({ name, value }) => setInputs({
+    ...inputs,
+    [name]: parseFloat(value, 10),
+  });
+
+  const hanldeReset = () => {
+    setInputs(initialInputs);
+    setResult(initialResult);
+  };
+
+  return (
+    <Container>
+      <InputBox bill={bill} onChange={handleInputsChange} people={people} tip={tip} />
+      <ResumeBox
+        onReset={hanldeReset}
+        tipAmount={tipAmount}
+        total={total}
+      />
+    </Container>
+  );
+};
 
 export default TipCalculator;

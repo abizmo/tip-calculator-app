@@ -56,7 +56,7 @@ const Icon = styled.img`
 
 const InputGroup = ({
   // eslint-disable-next-line react/prop-types
-  id, icon, placeholder, title, type,
+  id, icon, onChange, placeholder, step, title, type, value,
 }) => (
   <div>
     <Label htmlFor={id}>
@@ -64,7 +64,16 @@ const InputGroup = ({
     </Label>
     <Group>
       <Icon alt={id} src={icon} />
-      <Input id={id} name={id} placeholder={placeholder} style={{ paddingLeft: '50px' }} type={type} />
+      <Input
+        id={id}
+        name={id}
+        onChange={({ target }) => onChange(target)}
+        placeholder={placeholder}
+        step={step}
+        style={{ paddingLeft: '50px' }}
+        type={type}
+        value={value}
+      />
     </Group>
   </div>
 );
