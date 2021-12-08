@@ -42,10 +42,10 @@ const TipCalculator = () => {
   const { tipAmount, total } = result;
 
   useEffect(() => {
-    if (people) {
+    if (people && people !== 0) {
       setResult({
-        tipAmount: (bill * tip) / (100 * people),
-        total: (bill + (bill * tip) / 100) / people,
+        tipAmount: (+bill * tip) / (100 * people),
+        total: (+bill + (bill * (tip / 100))) / people,
       });
     }
   }, [bill, tip, people]);
