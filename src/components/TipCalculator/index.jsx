@@ -42,7 +42,7 @@ const TipCalculator = () => {
   const { tipAmount, total } = result;
 
   useEffect(() => {
-    if (people !== 0) {
+    if (people) {
       setResult({
         tipAmount: (bill * tip) / (100 * people),
         total: (bill + (bill * tip) / 100) / people,
@@ -52,7 +52,7 @@ const TipCalculator = () => {
 
   const handleInputsChange = ({ name, value }) => setInputs({
     ...inputs,
-    [name]: parseFloat(value, 10),
+    [name]: value,
   });
 
   const hanldeReset = () => {

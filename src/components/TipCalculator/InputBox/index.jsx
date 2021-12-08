@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import dollarIcon from '../../../assets/images/icon-dollar.svg';
@@ -55,33 +55,50 @@ const inputsData = [
 const InputBox = ({
 // eslint-disable-next-line react/prop-types
   bill, onChange, people,
-}) => (
-  <Container>
-    <InputGroup
-      icon={dollarIcon}
-      id="bill"
-      onChange={onChange}
-      placeholder="0"
-      step="0.01"
-      title="Bill"
-      type="number"
-      value={bill}
-    />
-    <div>
-      <Label>Select Tip %</Label>
-      <RadioGroup inputsData={inputsData} onChange={onChange} />
-    </div>
-    <InputGroup
-      icon={peopleIcon}
-      id="people"
-      onChange={onChange}
-      placeholder="0"
-      step="1"
-      title="Number of People"
-      type="number"
-      value={people}
-    />
-  </Container>
-);
+}) => {
+  const [changes, setChanges] = useState({
+    bill: false,
+    people: false,
+  });
+
+  const handleChanges = (target) => {
+    setChanges({
+      ...changes,
+      [target.name]: true,
+    });
+    onChange(target);
+  };
+
+  return (
+    <Container>
+      <InputGroup
+        error={bill <= 0 && changes.bill}
+        icon={dollarIcon}
+        id="bill"
+        onChange={handleChanges}
+        placeholder="0"
+        step="0.01"
+        title="Bill"
+        type="number"
+        value={parseFloat(bill, 10).toString()}
+      />
+      <div>
+        <Label>Select Tip %</Label>
+        <RadioGroup inputsData={inputsData} onChange={onChange} />
+      </div>
+      <InputGroup
+        error={people <= 0 && changes.people}
+        icon={peopleIcon}
+        id="people"
+        onChange={handleChanges}
+        placeholder="0"
+        step="1"
+        title="Number of People"
+        type="number"
+        value={parseInt(people, 10).toString()}
+      />
+    </Container>
+  );
+};
 
 export default InputBox;
