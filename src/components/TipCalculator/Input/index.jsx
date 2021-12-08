@@ -20,6 +20,7 @@ export const Input = styled.input`
     -webkit-appearance: none;
     margin: 0;
   }
+
   &[type=number] {
     -moz-appearance: textfield;
   }
@@ -30,6 +31,11 @@ export const Input = styled.input`
 
   &:hover, &:focus {
     border-color: ${({ theme }) => theme.color.primary};
+    cursor: pointer;
+  }
+
+  &.error {
+    border-color: ${({ theme }) => theme.color.error}
   }
 
   @media(min-width: 1024px) {
@@ -38,10 +44,15 @@ export const Input = styled.input`
 
 export const Label = styled.label`
   color: ${({ theme }) => theme.color.neutral.darker};
-  display: block;
+  display: flex;
+  justify-content: space-between;
   font-size: 16px;
   font-weight: ${({ theme }) => theme.typography.weight.bold};
   margin-bottom: 6px;
+
+  & span {
+    color: ${({ theme }) => theme.color.error}
+  }
 `;
 
 const Group = styled.div`
@@ -56,16 +67,20 @@ const Icon = styled.img`
 
 const InputGroup = ({
   // eslint-disable-next-line react/prop-types
-  id, icon, onChange, placeholder, step, title, type, value,
+  error, id, icon, onChange, placeholder, step, title, type, value,
 }) => (
   <div>
     <Label htmlFor={id}>
       {title}
+      {error
+        && <span>Can&apos;t be zero</span>}
     </Label>
     <Group>
       <Icon alt={id} src={icon} />
       <Input
+        className={error ? 'error' : ''}
         id={id}
+        min={0}
         name={id}
         onChange={({ target }) => onChange(target)}
         placeholder={placeholder}

@@ -4,8 +4,8 @@ export default {
     desktop: '1440px',
   },
   color: {
-    primary: 'hsl(172, 67%, 45%)',
-    hover: 'HSL(173,61%,77%)',
+    error: 'hsl(6,91%,57%)',
+    hover: 'hsl(173,61%,77%)',
     neutral: {
       darkest: 'hsl(183, 100%, 15%)',
       darker: 'hsl(186, 14%, 43%)',
@@ -14,6 +14,7 @@ export default {
       lighter: 'hsl(189, 41%, 97%)',
       white: 'hsl(0, 0%, 100%)',
     },
+    primary: 'hsl(172, 67%, 45%)',
   },
   typography: {
     family: {
