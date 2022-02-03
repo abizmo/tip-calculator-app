@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+
+import { TipCalculatorContext } from '../../../context';
 import Total from './Total';
 
 const Container = styled.div`
@@ -40,28 +41,27 @@ const Button = styled.button`
   }
 `;
 
-const ResumeBox = ({ onReset, tipAmount, total }) => (
-  <Container>
-    <div>
-      <Total
-        subtitle="/ person"
-        title="Tip Amount"
-        total={tipAmount}
-      />
-      <Total
-        subtitle="/ person"
-        title="Total"
-        total={total}
-      />
-    </div>
-    <Button disabled={!total} onClick={onReset} type="button">Reset</Button>
-  </Container>
-);
+const ResumeBox = () => {
+  const { reset, results } = useContext(TipCalculatorContext);
+  const { tipAmount, total } = results;
 
-ResumeBox.propTypes = {
-  onReset: PropTypes.func.isRequired,
-  tipAmount: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
+  return (
+    <Container>
+      <div>
+        <Total
+          subtitle="/ person"
+          title="Tip Amount"
+          total={tipAmount}
+        />
+        <Total
+          subtitle="/ person"
+          title="Total"
+          total={total}
+        />
+      </div>
+      <Button disabled={!total} onClick={reset} type="button">Reset</Button>
+    </Container>
+  );
 };
 
 export default ResumeBox;
