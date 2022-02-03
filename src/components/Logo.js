@@ -9,6 +9,7 @@ const Logo = styled.h1`
   max-width: 100px;
   text-align: center;
   text-transform: uppercase;
+  user-select: none;
   word-break: break-all;
 `;
 
