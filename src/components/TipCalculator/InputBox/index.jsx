@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 
 import dollarIcon from '../../../assets/images/icon-dollar.svg';
 import peopleIcon from '../../../assets/images/icon-person.svg';
+import { TipCalculatorContext } from '../../../context';
 import InputGroup, { Label } from '../Input';
 import RadioGroup from '../Input/RadioInput';
 
@@ -52,21 +53,20 @@ const inputsData = [
   },
 ];
 
-const InputBox = ({
-// eslint-disable-next-line react/prop-types
-  bill, onChange, people,
-}) => {
+const InputBox = () => {
   const [changes, setChanges] = useState({
     bill: false,
     people: false,
   });
+  const { inputs, changeInputs } = useContext(TipCalculatorContext);
+  const { bill, people } = inputs;
 
   const handleChanges = (target) => {
     setChanges({
       ...changes,
       [target.name]: true,
     });
-    onChange(target);
+    changeInputs(target);
   };
 
   return (
@@ -84,7 +84,7 @@ const InputBox = ({
       />
       <div>
         <Label>Select Tip %</Label>
-        <RadioGroup inputsData={inputsData} onChange={onChange} />
+        <RadioGroup inputsData={inputsData} onChange={changeInputs} />
       </div>
       <InputGroup
         error={people <= 0 && changes.people}
