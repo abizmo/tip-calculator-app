@@ -8,7 +8,7 @@
 .env.production.local
 .env.test.local
 .pnp.js
-.prettierignore# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.prettierignore
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
